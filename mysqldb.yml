@@ -1,0 +1,14 @@
+-
+  name: Ansible Playbook mysqldb.yml
+  hosts: [server2]
+  tasks:
+   - name: Install mysqldb.
+     apt: name={{ item }} state=present
+     with_items:
+       - mysql-server
+       - mysql-client
+
+   - name: Start mysqldb service.
+     service:
+      name: mysql
+      enabled: yes

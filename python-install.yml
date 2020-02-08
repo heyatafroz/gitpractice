@@ -1,0 +1,19 @@
+-
+  name: Ansible Playbook python-install.yml
+  hosts: [server1]
+  tasks:
+   - name: Install python and its dependencies.
+     apt: name={{ item }} state=present
+     with_items:
+       - python
+       - python-setuptools
+       - python-dev
+       - build-essential
+       - python-pip
+       - python-mysqldb
+
+   - name: Install Python Flask dependencies
+     pip: name={{ item }} state=present
+     with_items:
+       - flask
+       - flask-mysql
