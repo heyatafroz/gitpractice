@@ -1,7 +1,8 @@
 # Practice
 Ansible Practice Playbooks
 This repository will provide you scenarios to practice writing playbooks from very basics.
-Scenario 1:
+Scenario_1:
+
 Task 1:
 Create & Setup 3 Host Systems, Make Sure that Open SSH Server is installed on all the systems including the Control and Host nodes.
 
