@@ -12,8 +12,3 @@
        - python-pip
        - python-mysqldb
 
-   - name: Install Python Flask dependencies
-     pip: name={{ item }} state=present
-     with_items:
-       - flask
-       - flask-mysql

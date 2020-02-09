@@ -1,6 +1,6 @@
 [server1]
-host1 ansible_connection=ssh ansible_ssh_user=host1 ansible_port=22 ansible_ssh_pass=Feb@1234 ansible_host=192.168.0.108 ansible_python_interpreter=/usr/bin/python3
+host1 ansible_connection=ssh ansible_port=22 ansible_ssh_pass=Feb@1234 ansible_host=192.168.0.108 ansible_python_interpreter=/usr/bin/python3
 [server2]
-host2 ansible_connection=ssh ansible_ssh_user=host2 ansible_port=22 ansible_ssh_pass=Mar@1234 ansible_host=192.168.0.110 ansible_python_interpreter=/usr/bin/python3
+host2 ansible_connection=ssh ansible_port=22 ansible_ssh_pass=Mar@1234 ansible_host=192.168.0.110 ansible_python_interpreter=/usr/bin/python3
 [server3]
-host3 ansible_connection=ssh ansible_ssh_user=host3 ansible_port=22 ansible_ssh_pass=Apr@1234 ansible_host=192.168.0.111 ansible_python_interpreter=/usr/bin/python3
+host3 ansible_connection=ssh ansible_port=22 ansible_ssh_pass=Apr@1234 ansible_host=192.168.0.111 ansible_python_interpreter=/usr/bin/python3
