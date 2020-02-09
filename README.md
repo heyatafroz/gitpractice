@@ -15,11 +15,13 @@ Write 3 playbooks
 				python-dev
 				build-essential
 				python-pip
+				python3-pip
 				python-mysqldb
+				
 	Task 2: Install Python Flask
 	        Dependencies:
-				Flask
-				Flask-mysql
+				flask
+				flask-mysql
 		
 2. mysqldb.yml
 	Task 1: Install Mysql
