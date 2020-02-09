@@ -14,26 +14,26 @@ Write 3 playbooks
 
 Task 1: Install python
 Dependencies:
-	python-setuptools
-	python-dev
-	build-essential
-	python-pip
-	python3-pip
-	python-mysqldb
+python-setuptools
+python-dev
+build-essential
+python-pip
+python3-pip
+python-mysqldb
 				
 Task 2: Install Python Flask
 Dependencies:
-	flask
-	flask-mysql
+flask
+flask-mysql
 		
 2. mysqldb.yml
 
 Task 1: Install Mysql
-	mysql-server
-	mysql-client
+mysql-server
+mysql-client
 	
 Task 2: Start Service
-	mysql
+mysql
 
 3. docker-install.yml
 
