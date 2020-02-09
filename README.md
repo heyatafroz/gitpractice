@@ -1,6 +1,7 @@
 # Practice
 Ansible Practice Playbooks
 This repository will provide you scenarios to practice writing playbooks from very basics.
+
 Scenario_1:
 
 Task 1:
