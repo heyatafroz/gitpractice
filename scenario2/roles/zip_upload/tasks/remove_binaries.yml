@@ -1,0 +1,12 @@
+---
+- name: Remove Binaries from Temporary folder in /tmp/WK_binaries
+  file:
+    path: "{{ DESTPATH }}{{ item }}"
+    state: absent
+  with_items:
+    - "{{ PACKAGE }}"
+   
+- name: Result of removing of folders in temporary path
+  debug:
+    msg:
+      - "Successfully removed folders from {{ DESTPATH }}"
