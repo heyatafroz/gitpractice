@@ -1,0 +1,93 @@
+---
+
+# ======================================================
+# New Release Unarchiving and copying at temp directory
+# MRQ: 08/2019
+# ======================================================
+
+# Unzip new release at /share/wksas/ ,i.e. shared path      
+
+- name: change dir /share/wksas
+  shell: |
+    cd {{ source_path }}
+    
+
+
+- name: Starting release to unzip package delivered by wk
+  debug:
+    msg:
+      - "Please wait till unzip done"
+
+
+- name: Check and create on /share/wksas/ path if release directory exists with {{ Release_no }}
+  file:
+    path: "{{ source_path }}{{ Release_no }}"
+    state: directory
+
+
+- name: Unzipping the new release at /share/wksas/{{ Release_no }}
+  unarchive:
+    src: "{{ source_path }}{{ Release_no }}.zip"
+    dest: "{{ source_path }}"
+    #force: no
+    remote_src: yes
+  ignore_errors: yes
+
+
+- name: New release is unzipped at {{ source_path }}{{ Release_no }}
+  debug:
+    msg:
+      - "The release = {{ Release_no }} is successfully unzipped at {{ source_path }}"
+
+#- name: Check the release to upload on nexus on Ansible directory of {{release_component}}
+#  debug:
+#    msg:
+#      - "{{ item }}"
+#  with_lines: cat {{ release_component }}
+  
+# ============================================================================
+#  Below Task only required when Uploading is not happening from share/wksas
+#  Required release will be copied to /data/tmp and upload it to Nexus
+# ============================================================================
+# ( Alternate of Cat commands)
+#- slurp:
+#    src: " {{ release_component }}"
+#  register: slurp_results
+
+#- name: Start echo all the lines in remotefile
+#  shell: echo {{ item }}
+#  with_items: "{{ (slurp_results.content|b64decode).splitlines() }}"
+
+#- name: Check and create on /data/tmp/ path if release directory exists with {{ Release_no }}
+#  file:
+#    path: "{{ dest_path }}{{ Release_no }}"
+#    state: directory
+
+#- name: Copy Ansible directory at dest_path
+#  copy:
+#    src: "{{ source_path }}{{ Release_no }}/Ansible"
+#    dest: "{{ dest_path }}{{ Release_no }}"
+#    creates:
+
+#- name: Ansible directory created at dest_path
+#  debug:
+#    msg:
+#      - "Ansible folder created and respective files copied at {{ dest_path }}Ansible"
+
+#- name: Copy release file at dest_path
+#  synchronize:
+#    src: "{{ source_path }}{{ Release_no }}/{{ item }}.zip"
+#    dest: "{{ dest_path }}{{ Release_no }}"
+#    force: no
+#  with_lines: cat {{ release_component }}
+
+#- name: Copied the Main Release File at dest_path
+#  debug:
+#    msg:
+#      - "The WK release = {{ Release_no }} is copied at {{ dest_path }} "
+
+# data/tmp task end here
+
+# ============================================================================
+
+# End of script
