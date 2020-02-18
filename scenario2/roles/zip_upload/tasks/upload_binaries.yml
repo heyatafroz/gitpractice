@@ -1,0 +1,31 @@
+---
+
+# ======================================================
+#  New WK Release Uploading on Nexus
+#  MRQ: 11/2019
+# ======================================================
+
+- name: Get the file contents
+  debug:
+    msg:
+      - "Starting the upload"
+      
+- name: Find the file nexus_applicatons.yml in remote node
+  slurp:
+    src: "{{ release_component }}"
+  register: slurp_results
+
+- name: Upload the zipped binaries to Nexus repository
+  shell: |
+    curl -v -u c55016:Mayfive@2014 --ftp-create-dirs -T {{ source_path }}{{ Release_no }}/{{ item }}.zip {{ nexus_url }}{{ Release_no }}/
+  with_items: "{{ (slurp_results.content|b64decode).splitlines() }}"
+ 
+- name: Upload Ansible to Nexus repository
+  shell: |
+    cd {{ source_path }}{{ Release_no }}/
+    find Ansible -type  f -exec curl -u  c55016:Mayfive@2014 --ftp-create-dirs -T {} {{ nexus_url }}{{ Release_no }}/{} \;
+
+- name: Completed
+  debug:
+    msg:
+      - "{{ Release_no }} is uploaded in {{ nexus_url }}"
