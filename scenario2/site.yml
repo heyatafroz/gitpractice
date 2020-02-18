@@ -1,0 +1,6 @@
+---
+- hosts: wktonexus
+  vars_files:
+    - datafiles/releasenumber.yml
+  roles:
+    - WK_zip_upload
