@@ -1,0 +1,26 @@
+---
+######################################
+##Defining UserID and Password
+#######################################
+ansible_user: '{{ ansiblemachine_user  }}@SOLON.PRD'
+ansible_password: '{{ ansiblemachine_password }}'
+############################################################################################################
+##Variable declaration
+################################################################################################################
+ansiblemachine_user: c55016a
+ansiblemachine_password: "{{vault_ansiblemachine}}"
+###########################################################################################################
+#=================================================================================
+## All vars
+##=================================================================================
+ansible_connection: ssh
+Release_no: 'Release_{{rel_no}}'
+source_path: '/share/wksas/'
+dest_path: '/data/tmp/'
+
+# Old Nexus Path -- update with new 23-09-2019
+#nexus_url: https://p-nexus.nl.eu.abnamro.com:8443/nexus/content/repositories/VET-releases/Wolter_Kluwer_packages/
+nexus_url: https://p-nexus-repo.development.nl.eu.abnamro.com:8443/nexus/content/repositories/aab-ots-releases/com/abnamro/frai/VET_WKpackages/
+nexus_file_path: '{{dest_path}}{{Release_no}}/Ansible/nexus_applications.yml'
+release_component: '{{source_path}}{{Release_no}}/Ansible/nexus_applications.yml'
+# End of file
