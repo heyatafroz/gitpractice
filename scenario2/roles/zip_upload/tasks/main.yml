@@ -1,0 +1,4 @@
+---
+- include_tasks: archive_Binaries.yml
+
+- include_tasks: Upload_Binaries.yml
